@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView list;
     NewsAdapter adapter;
     //초기값 설정
+    String link;
     String query="수능";
     int start=1;
     @Override

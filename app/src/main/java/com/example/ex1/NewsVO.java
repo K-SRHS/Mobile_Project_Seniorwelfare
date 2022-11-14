@@ -5,9 +5,6 @@ public class NewsVO {
     private String content;
     private String link;
 
-
-
-
     public String getTitle() {
         return title;
     }
