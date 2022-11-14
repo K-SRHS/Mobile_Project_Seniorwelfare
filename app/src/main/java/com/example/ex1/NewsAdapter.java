@@ -18,7 +18,7 @@ import java.util.ArrayList;
 public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
     ArrayList<NewsVO> array;
     Context context;
-
+    int start;
     public NewsAdapter(ArrayList<NewsVO> array, Context context) {
         this.array = array;
         this.context = context;
@@ -35,6 +35,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.txttitle.setText(Html.fromHtml(array.get(position).getTitle()));
         holder.txtcontent.setText(Html.fromHtml(array.get(position).getContent()));
+        //holder.txtlink.setText(Html.fromHtml(array.get(position).getLink()));
     }
 
     @Override
@@ -43,18 +44,22 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView txttitle,txtcontent;
+        TextView txttitle,txtcontent,txtlink;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Log.d("test","dsa"+getAdapterPosition());
-                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://google.com/"));
+//                    Intent intent = new Intent(Intent.ACTION_VIEW,Uri.parse("http://m.naver.com"));
+//                    intent.addFlags(intent.FLAG_ACTIVITY_NEW_TASK);
+//                    context.startActivity(intent);
+
                 }
             });
             txttitle=itemView.findViewById(R.id.txttitle);
             txtcontent=itemView.findViewById(R.id.txtcontent);
+            //txtlink=itemView.findViewById(R.id.txtlink);
         }
     }
 }

@@ -5,7 +5,8 @@
     android:padding="10sp"
     android:background="#FF9800"
     android:orientation="vertical"
-    android:layout_margin="50sp">
+    android:layout_margin="50sp"
+    android:id="@+id/txtlink">
 
     <TextView
         android:layout_width="match_parent"

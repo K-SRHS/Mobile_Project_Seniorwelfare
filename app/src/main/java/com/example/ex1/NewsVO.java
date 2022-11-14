@@ -3,7 +3,7 @@ package com.example.ex1;
 public class NewsVO {
     private String title;
     private String content;
-    private  String link;
+    private String link;
 
 
 
@@ -24,9 +24,7 @@ public class NewsVO {
         this.content = content;
     }
 
-    public String getLink() {
-        return link;
-    }
+    public String getLink() { return link; }
 
     public void setLink(String link) {
         this.link = link;
