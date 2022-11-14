@@ -52,6 +52,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
                 public void onClick(View view) {
                     Log.d("test","dsa"+getAdapterPosition());
                     Intent intent = new Intent(Intent.ACTION_VIEW,Uri.parse("http://m.naver.com"));
+                    //최종적으로 NaverAPI에 있는 URL주소값을 가져와서 Uri.parse에 넣은 뒤 각각의 뉴스내용 클릭시 해당하는 뉴스 띄우기
                     intent.addFlags(intent.FLAG_ACTIVITY_NEW_TASK);
                     context.startActivity(intent);
 
