@@ -51,9 +51,9 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
                 @Override
                 public void onClick(View view) {
                     Log.d("test","dsa"+getAdapterPosition());
-//                    Intent intent = new Intent(Intent.ACTION_VIEW,Uri.parse("http://m.naver.com"));
-//                    intent.addFlags(intent.FLAG_ACTIVITY_NEW_TASK);
-//                    context.startActivity(intent);
+                    Intent intent = new Intent(Intent.ACTION_VIEW,Uri.parse("http://m.naver.com"));
+                    intent.addFlags(intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(intent);
 
                 }
             });
