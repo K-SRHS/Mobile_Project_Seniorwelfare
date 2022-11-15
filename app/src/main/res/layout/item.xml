@@ -27,7 +27,7 @@
 
     <TextView
         android:id="@+id/txtlink"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:singleLine="true"
         android:text="여기에는 주소 출력"
