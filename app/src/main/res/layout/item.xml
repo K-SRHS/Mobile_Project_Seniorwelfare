@@ -5,8 +5,7 @@
     android:padding="10sp"
     android:background="#FF9800"
     android:orientation="vertical"
-    android:layout_margin="50sp"
-    android:id="@+id/txtlink">
+    android:layout_margin="50sp">
 
     <TextView
         android:layout_width="match_parent"
@@ -16,12 +15,22 @@
         android:textColor="#ffffff"
         android:textSize="20sp"
         android:id="@+id/txttitle"/>
+
     <TextView
+        android:id="@+id/txtcontent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:singleLine="true"
         android:text="여기에는 내용 출력"
         android:textColor="#FFEB3B"
-        android:textSize="15sp"
-        android:id="@+id/txtcontent"/>
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/txtlink"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:singleLine="true"
+        android:text="여기에는 주소 출력"
+        android:textColor="#FFEB3B"
+        android:textSize="15sp" />
 </LinearLayout>

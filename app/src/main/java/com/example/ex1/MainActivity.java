@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     //초기값 설정
     String link;
     String query="수능";
-    int start=1;
+    int start=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         btnmore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                start += 10;
+                start += 0;
                 new NaverThread().execute();
             }
         });
@@ -92,6 +92,8 @@ public class MainActivity extends AppCompatActivity {
                     vo.setLink(obj.getString("link"));
                     array.add(vo);
                     System.out.println("결과............." + vo.getTitle());
+                    System.out.println("결과............." + vo.getLink());
+
 
                 }
             } catch (JSONException e) {
@@ -116,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 query=query;
-                start=1;
+                start=0;
                 array.clear();
                 new NaverThread().execute();
                 return false;
@@ -125,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onQueryTextChange(String newText) {
                 query=newText;
-                start=1;
+                start=0;
                 array.clear();
                 new NaverThread().execute();
                 return false;

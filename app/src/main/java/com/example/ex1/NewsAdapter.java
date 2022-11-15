@@ -40,8 +40,10 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.txttitle.setText(Html.fromHtml(array.get(position).getTitle()));
         holder.txtcontent.setText(Html.fromHtml(array.get(position).getContent()));
+        holder.txtlink.setText(Html.fromHtml(array.get(position).getLink()));
         link = array.get(position).getLink();
     }
+
 
     @Override
     public int getItemCount() {
@@ -53,7 +55,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
 
 //        URL API = NaverAPI.dbdkfdpf(query, start);
 //        String asd = API.toString();
-        TextView txttitle,txtcontent;
+        TextView txttitle,txtcontent,txtlink;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -61,12 +63,13 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
                 @Override
                 public void onClick(View view) {
                     try{
-                    Log.d("test","dsa"+getAdapterPosition());
+                    Log.d("test",link);
 
                     Intent intent = new Intent(Intent.ACTION_VIEW,Uri.parse(link));
-                    //최종적으로 NaverAPI에 있는 URL주소값을 가져와서 Uri.parse에 넣은 뒤 각각의 뉴스내용 클릭시 해당하는 뉴스 띄우기
-                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    context.startActivity(intent);}
+                   //최종적으로 NaverAPI에 있는 URL주소값을 가져와서 Uri.parse에 넣은 뒤 각각의 뉴스내용 클릭시 해당하는 뉴스 띄우기
+
+                    context.startActivity(intent);
+    }
                     catch (Exception e){
                         e.printStackTrace();
                     }
@@ -75,7 +78,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
             });
             txttitle=itemView.findViewById(R.id.txttitle);
             txtcontent=itemView.findViewById(R.id.txtcontent);
-            //txtlink=itemView.findViewById(R.id.txtlink);
+            txtlink=itemView.findViewById(R.id.txtlink);
         }
     }
 }
