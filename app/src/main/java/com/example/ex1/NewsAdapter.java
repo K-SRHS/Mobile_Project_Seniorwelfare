@@ -59,11 +59,15 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            txttitle=itemView.findViewById(R.id.txttitle);
+            txtcontent=itemView.findViewById(R.id.txtcontent);
+            txtlink=itemView.findViewById(R.id.txtlink);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     try{
-                    Log.d("test",link);
+
+                    Log.d("test","link"+getAdapterPosition());
 
                     Intent intent = new Intent(Intent.ACTION_VIEW,Uri.parse(link));
                    //최종적으로 NaverAPI에 있는 URL주소값을 가져와서 Uri.parse에 넣은 뒤 각각의 뉴스내용 클릭시 해당하는 뉴스 띄우기
@@ -76,9 +80,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
 
                 }
             });
-            txttitle=itemView.findViewById(R.id.txttitle);
-            txtcontent=itemView.findViewById(R.id.txtcontent);
-            txtlink=itemView.findViewById(R.id.txtlink);
+
         }
     }
 }

@@ -32,13 +32,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.main);
         //NaverAPI에 search메서드가 static으로 정의되어있어 클래스를 생성하지않고 사용
 
 
         getSupportActionBar().setTitle("뉴스검색");
-
-
 
         list=findViewById(R.id.list);
         LinearLayoutManager manager=new LinearLayoutManager(this);
@@ -52,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         btnmore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                start += 0;
+                start += 10;
                 new NaverThread().execute();
             }
         });
@@ -118,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 query=query;
-                start=0;
+                start=10;
                 array.clear();
                 new NaverThread().execute();
                 return false;
@@ -127,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onQueryTextChange(String newText) {
                 query=newText;
-                start=0;
+                start=10;
                 array.clear();
                 new NaverThread().execute();
                 return false;
