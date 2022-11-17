@@ -15,15 +15,15 @@
         android:layout_height="wrap_content"
         android:text="Hello World!" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
+
+    <ImageButton
         android:id="@+id/btnmore"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:background="@drawable/m1"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="10sp"
-        android:layout_marginTop="10sp"
-        android:layout_marginEnd="10sp"
-        android:layout_marginBottom="10sp"
-        android:clickable="true" />
+        android:clickable="true"
+        android:layout_margin="5sp"
+        android:scaleType="fitXY"/>
 </RelativeLayout>

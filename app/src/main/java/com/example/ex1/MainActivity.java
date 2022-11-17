@@ -1,6 +1,7 @@
 package com.example.ex1;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -9,6 +10,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.SearchView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -26,8 +28,7 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView list;
     NewsAdapter adapter;
     //초기값 설정
-    String link;
-    String query="수능";
+    String query="노인";
     int start=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,14 +47,17 @@ public class MainActivity extends AppCompatActivity {
         //클래스 생성
         new NaverThread().execute();
 
-        FloatingActionButton btnmore=findViewById(R.id.btnmore);
+        ImageButton btnmore=findViewById(R.id.btnmore);
         btnmore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                start += 10;
+                start += 11;
+
                 new NaverThread().execute();
             }
         });
+        RecyclerDecoration_Height decoration_height = new RecyclerDecoration_Height(20);
+        list.addItemDecoration(decoration_height);
     }
     //naver접속 위한 thread 정의
     //BACK THREAD
@@ -72,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-            System.out.println(s);
+            //System.out.println(s);
 
 
             try {
@@ -100,9 +104,6 @@ public class MainActivity extends AppCompatActivity {
             adapter=new NewsAdapter(array,MainActivity.this);
             list.setAdapter(adapter);
             list.scrollToPosition(start);
-
-
-
         }
     }
 
@@ -111,6 +112,9 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu,menu);
         MenuItem search=menu.findItem(R.id.search);
         SearchView searchView=(SearchView)search.getActionView();
+        searchView.setFocusable(true);
+        searchView.setIconified(false);
+        //searchView.requestFocusFromTouch();
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override

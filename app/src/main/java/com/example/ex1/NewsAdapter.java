@@ -13,16 +13,12 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.ArrayList;
 
 public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
     ArrayList<NewsVO> array;
     Context context;
     String link;
-
-
 
     public NewsAdapter(ArrayList<NewsVO> array, Context context) {
         this.array = array;
@@ -41,9 +37,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
         holder.txttitle.setText(Html.fromHtml(array.get(position).getTitle()));
         holder.txtcontent.setText(Html.fromHtml(array.get(position).getContent()));
         holder.txtlink.setText(Html.fromHtml(array.get(position).getLink()));
-        link = array.get(position).getLink();
     }
-
 
     @Override
     public int getItemCount() {
@@ -53,10 +47,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-//        URL API = NaverAPI.dbdkfdpf(query, start);
-//        String asd = API.toString();
         TextView txttitle,txtcontent,txtlink;
-
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             txttitle=itemView.findViewById(R.id.txttitle);
@@ -66,13 +57,11 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
                 @Override
                 public void onClick(View view) {
                     try{
-
                     Log.d("test","link"+getAdapterPosition());
-
-                    Intent intent = new Intent(Intent.ACTION_VIEW,Uri.parse(link));
-                   //최종적으로 NaverAPI에 있는 URL주소값을 가져와서 Uri.parse에 넣은 뒤 각각의 뉴스내용 클릭시 해당하는 뉴스 띄우기
-
-                    context.startActivity(intent);
+                    Log.d("test","link"+">>"+link);
+                        int position=getAdapterPosition();
+                        Intent intent = new Intent(Intent.ACTION_VIEW,Uri.parse(array.get(position).getLink()));
+                        context.startActivity(intent);
     }
                     catch (Exception e){
                         e.printStackTrace();
