@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
@@ -35,6 +36,23 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         //NaverAPI에 search메서드가 static으로 정의되어있어 클래스를 생성하지않고 사용
+        ImageButton buttonchat = (ImageButton) findViewById(R.id.chat);
+        buttonchat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View chat) {
+                Intent intent = new Intent(MainActivity.this,ChatActivity.class);
+                startActivity(intent);
+            }
+        });
+        ImageButton buttongame = (ImageButton) findViewById(R.id.game);
+        buttongame.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View game) {
+                Intent intent = new Intent(MainActivity.this,GameActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
 
         getSupportActionBar().setTitle("뉴스검색");
@@ -114,7 +132,7 @@ public class MainActivity extends AppCompatActivity {
         SearchView searchView=(SearchView)search.getActionView();
         searchView.setFocusable(true);
         searchView.setIconified(false);
-        //searchView.requestFocusFromTouch();
+        searchView.requestFocusFromTouch();
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
