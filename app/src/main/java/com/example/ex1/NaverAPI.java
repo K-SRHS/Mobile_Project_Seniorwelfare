@@ -16,7 +16,8 @@ public class NaverAPI {
         HttpURLConnection con;
         try {
             String text = URLEncoder.encode(query, "UTF-8");
-            String apiURL = BASE_URL + text; // json 결과
+            int display = 100;
+            String apiURL = BASE_URL + text + display; // json 결과
             apiURL += "&start" + start;
 
             URL url = new URL(apiURL);

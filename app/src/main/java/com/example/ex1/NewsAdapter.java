@@ -57,12 +57,13 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
                 @Override
                 public void onClick(View view) {
                     try{
-                    Log.d("test","link"+getAdapterPosition());
-                    Log.d("test","link"+">>"+link);
                         int position=getAdapterPosition();
+                        link = array.get(position).getLink();
+                        Log.d("test","link"+getAdapterPosition());
+                        Log.d("test","link"+">>"+link);
                         Intent intent = new Intent(Intent.ACTION_VIEW,Uri.parse(array.get(position).getLink()));
                         context.startActivity(intent);
-    }
+                    }
                     catch (Exception e){
                         e.printStackTrace();
                     }

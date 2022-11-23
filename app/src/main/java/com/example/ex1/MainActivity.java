@@ -25,7 +25,7 @@ import java.util.ArrayList;
 
 //MainActivity는 메인 THRED
 public class MainActivity extends AppCompatActivity {
-    ArrayList<NewsVO> array;
+    ArrayList<NewsVO> array = null;
     RecyclerView list;
     NewsAdapter adapter;
     //초기값 설정
@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         //NaverAPI에 search메서드가 static으로 정의되어있어 클래스를 생성하지않고 사용
-        ImageButton buttonchat = (ImageButton) findViewById(R.id.chat);
+        ImageButton buttonchat = (ImageButton) findViewById(R.id.chatpage);
         buttonchat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View chat) {
@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        ImageButton buttongame = (ImageButton) findViewById(R.id.game);
+        ImageButton buttongame = (ImageButton) findViewById(R.id.gamepage);
         buttongame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View game) {
@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        getSupportActionBar().setTitle("뉴스검색");
+        //getSupportActionBar().setTitle("뉴스검색");
 
         list=findViewById(R.id.list);
         LinearLayoutManager manager=new LinearLayoutManager(this);
@@ -155,4 +155,5 @@ public class MainActivity extends AppCompatActivity {
         });
         return super.onCreateOptionsMenu(menu);
     }
+
 }
