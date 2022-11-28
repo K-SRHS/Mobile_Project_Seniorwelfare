@@ -1,7 +1,6 @@
 package com.example.ex1;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -14,13 +13,10 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.SearchView;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 //MainActivity는 메인 THRED
@@ -28,8 +24,7 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<NewsVO> array = null;
     RecyclerView list;
     NewsAdapter adapter;
-    //초기값 설정
-    String query="노인";
+    String query="노인";    //초기값 설정
     int start=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         buttonchat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View chat) {
-                Intent intent = new Intent(MainActivity.this,ChatActivity.class);
+                Intent intent = new Intent(MainActivity.this, ChatRoomFragment.class);
                 startActivity(intent);
             }
         });
@@ -55,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        //getSupportActionBar().setTitle("뉴스검색");
+        getSupportActionBar().setTitle("뉴스페이지");
 
         list=findViewById(R.id.list);
         LinearLayoutManager manager=new LinearLayoutManager(this);
