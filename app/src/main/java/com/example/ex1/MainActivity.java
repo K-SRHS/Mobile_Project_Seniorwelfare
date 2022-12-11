@@ -1,9 +1,5 @@
 package com.example.ex1;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -12,6 +8,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.SearchView;
+import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -26,16 +27,18 @@ public class MainActivity extends AppCompatActivity {
     NewsAdapter adapter;
     String query="노인";    //초기값 설정
     int start=0;
+    int display = 0;
+    private long lastTimeBackPressed;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         //NaverAPI에 search메서드가 static으로 정의되어있어 클래스를 생성하지않고 사용
-        ImageButton buttonchat = (ImageButton) findViewById(R.id.chatpage);
+        ImageButton buttonchat = (ImageButton) findViewById(R.id.wlehpage);
         buttonchat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View chat) {
-                Intent intent = new Intent(MainActivity.this, ChatRoomFragment.class);
+                Intent intent = new Intent(MainActivity.this, GoogleMap.class);
                 startActivity(intent);
             }
         });
@@ -64,21 +67,34 @@ public class MainActivity extends AppCompatActivity {
         btnmore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                start += 11;
-
+                start += 10;//더보기 클릭시 넘어가는 뉴스개수
+                display +=10;
                 new NaverThread().execute();
             }
         });
         RecyclerDecoration_Height decoration_height = new RecyclerDecoration_Height(20);
         list.addItemDecoration(decoration_height);
     }
+
+    @Override
+    public void onBackPressed()
+    {
+        if(System.currentTimeMillis() - lastTimeBackPressed < 1500){
+            finish();
+            return;
+        }
+        Toast.makeText(this,"한번더 뒤로가기 클릭시 앱을 종료합니다.",Toast.LENGTH_SHORT).show();
+        lastTimeBackPressed = System.currentTimeMillis();
+
+    }
+
     //naver접속 위한 thread 정의
     //BACK THREAD
     class NaverThread extends AsyncTask<String, String, String>{
         @Override
         protected String doInBackground(String... strings) {
             //System.out.println(".....................................");
-            return NaverAPI.search(query,start);
+            return NaverAPI.search(query,start,display);
         }
 
         @Override
@@ -89,6 +105,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
+
             //System.out.println(s);
 
 
@@ -133,19 +150,21 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 query=query;
-                start=10;
+                start=0;
+                display=0;
                 array.clear();
                 new NaverThread().execute();
-                return false;
+              return false;
             }
 
             @Override
             public boolean onQueryTextChange(String newText) {
                 query=newText;
-                start=10;
+                start=0;
+                display=0;
                 array.clear();
                 new NaverThread().execute();
-                return false;
+              return false;
             }
         });
         return super.onCreateOptionsMenu(menu);

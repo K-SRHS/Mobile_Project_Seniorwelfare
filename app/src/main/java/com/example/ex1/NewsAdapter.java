@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.text.Html;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,6 +44,8 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
     }
 
 
+
+
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView txttitle,txtcontent,txtlink;
@@ -59,8 +60,9 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ViewHolder> {
                     try{
                         int position=getAdapterPosition();
                         link = array.get(position).getLink();
-                        Log.d("test","link"+getAdapterPosition());
-                        Log.d("test","link"+">>"+link);
+                        //Log.d("test","link"+getAdapterPosition());
+                        //Log.d("test","link"+">>"+link);
+
                         Intent intent = new Intent(Intent.ACTION_VIEW,Uri.parse(array.get(position).getLink()));
                         context.startActivity(intent);
                     }

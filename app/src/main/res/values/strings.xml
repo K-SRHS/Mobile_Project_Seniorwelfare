@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">ex1</string>
+    <string name="app_name">노인 복지 서비스</string>
+    <string name="restapi_key">KakaoAK b671bb64610d8cd4cac6e7435b94a052</string>
 </resources>
