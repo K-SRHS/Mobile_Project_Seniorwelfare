@@ -16,7 +16,9 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="290dp"
             android:layout_marginTop="650dp"
-            android:src="@color/black" />
+            android:src="@drawable/location"
+            app:fabSize="normal"
+            app:tint="@null"/>
     </RelativeLayout>
 
 </RelativeLayout>

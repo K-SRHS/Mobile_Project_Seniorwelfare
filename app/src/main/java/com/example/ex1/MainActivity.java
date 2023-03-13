@@ -74,6 +74,8 @@ public class MainActivity extends AppCompatActivity {
         });
         RecyclerDecoration_Height decoration_height = new RecyclerDecoration_Height(20);
         list.addItemDecoration(decoration_height);
+
+
     }
 
     @Override
